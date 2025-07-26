@@ -1,0 +1,22 @@
+version: 2
+
+sources:
+  - name: northwind
+    description: "Northwind sample database - raw data"  
+    database: data-444203
+    schema: northwind_raw
+    tables:
+      - name: customers
+        description: "Customer information"
+      - name: orders
+        description: "Order header information"
+      - name: order_details
+        description: "Order line item details"
+      - name: products
+        description: "Product catalog"
+      - name: categories
+        description: "Product categories"
+      - name: employees
+        description: "Employee information"
+      - name: suppliers
+        description: "Supplier information"
