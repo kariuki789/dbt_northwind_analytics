@@ -27,6 +27,7 @@ models:
       - name: product_id
         tests:
         - not_null
+        - unique
         
       - name: unit_price
         tests:

@@ -9,7 +9,7 @@ select
     unitsinstock as units_in_stock,
     unitsonorder as units_on_order,
     reorderlevel as reorder_level,
-    cast(discontinued as bool) as discontinued,
+    cast(discontinued as bool) as is_discontinued,
     case
         when unitsinstock <= reorderlevel
         then true
