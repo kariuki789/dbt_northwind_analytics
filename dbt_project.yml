@@ -32,25 +32,11 @@ models:
       +docs:
         node_color: "lightblue"
     
-    # Config for intermediate models
-    intermediate:
-      +materialized: view
-      +docs:
-        node_color: "orange"
-    
-    # Config for marts
-    marts:
+    # Config for production models
+    Production:
       +materialized: table
       +docs:
         node_color: "green"
-      
-      # Core business entities
-      core:
-        +materialized: table
-      
-      # Analytics and reporting models
-      analytics:
-        +materialized: view
 
 # Add some useful variables
 vars:
