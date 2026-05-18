@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: stg_employees
+    columns:
+      - name: employee_id
+        tests:
+          - unique
+          - not_null
+      # add more columns and tests...
+
+  - name: stg_order_details
+    columns:
+      # your tests here...
+      - name: order_id
+        tests:
+        - not_null
+      - name: line_total
+        tests:
+        - not_null
+        
+        
+
+  - name: stg_products
+    columns:
+      # your tests here...
+      - name: product_id
+        tests:
+        - not_null
+        
+      - name: unit_price
+        tests:
+        - not_null

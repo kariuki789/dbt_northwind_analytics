@@ -7,5 +7,5 @@ select
     quantity,
     discount,
     unitprice * quantity * (1 - discount) as line_total,
-    case when discount > 0 then true else false end as is_discounted
+    CASE WHEN  discount > 0 THEN true ELSE false END AS is_discounted
 from {{ source("northwind", "order_details") }}
