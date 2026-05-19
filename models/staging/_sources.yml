@@ -2,21 +2,42 @@ version: 2
 
 sources:
   - name: northwind
-    description: "Northwind sample database - raw data"  
+    description: "Northwind sample database - raw data"
     database: data-444203
     schema: northwind_raw
+
+    # Default freshness — dbt 1.10+ requires this inside config
+    config:
+      freshness:
+        warn_after: {count: 24, period: hour}
+        error_after: {count: 48, period: hour}
+
     tables:
-      - name: customers
-        description: "Customer information"
       - name: orders
         description: "Order header information"
+        loaded_at_field: orderDate
+        # Inherits default freshness from source config: warn 24h, error 48h
+
+      - name: customers
+        description: "Customer information — static reference table, no timestamp available"
+        freshness: null  # no timestamp column exists, skip freshness check
+
       - name: order_details
-        description: "Order line item details"
+        description: "Order line item details — no timestamp column, freshness tracked via orders"
+        freshness: null
+
       - name: products
-        description: "Product catalog"
+        description: "Product catalog — static reference table, no timestamp available"
+        freshness: null
+
       - name: categories
-        description: "Product categories"
+        description: "Product categories — static reference table"
+        freshness: null
+
       - name: employees
-        description: "Employee information"
+        description: "Employee information — hireDate is a business date, not a load timestamp"
+        freshness: null
+
       - name: suppliers
-        description: "Supplier information"
+        description: "Supplier information — static reference table"
+        freshness: null
