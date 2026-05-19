@@ -31,9 +31,14 @@ models:
       +materialized: view
       +docs:
         node_color: "lightblue"
-    
-    # Config for production models
-    Production:
+
+    intermediate:
+      +materialized: ephemeral
+      +docs:
+        node_color: "lightyellow"
+
+    # Config for mart models
+    marts:
       +materialized: table
       +docs:
         node_color: "green"

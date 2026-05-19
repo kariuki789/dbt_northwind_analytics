@@ -4,9 +4,9 @@ select
     order_id,
     customer_id,
     employee_id,
-    orderDate as order_date,
-    requiredDate as required_date,
-    shippedDate as shipped_date,
+    order_date,
+    required_date,
+    shipped_date,
     shipper_id,
     freight,
     ship_name,
@@ -18,5 +18,5 @@ select
 from {{ ref('stg_orders') }}
 
 {% if is_incremental() %}
-    where orderDate > (select max(order_date) from {{ this }})
+    where order_date > (select max(order_date) from {{ this }})
 {% endif %}
